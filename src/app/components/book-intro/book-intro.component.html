@@ -72,28 +72,11 @@
   @if (!isMobile()) {
   <div class="book-overlay">
 
-    <!-- Metà sinistra: interno libro chiuso (endpaper) — svanisce dopo apertura -->
-    <div class="book-endpaper" [class.endpaper-open]="isOpening()">
-      <svg class="liberty-flower-bg" viewBox="0 0 200 200" fill="none">
-        <g opacity="0.08" transform="translate(100,100)">
-          <ellipse cx="0" cy="-35" rx="12" ry="32" fill="#552c00"/>
-          <ellipse cx="0" cy="-35" rx="12" ry="32" fill="#552c00" transform="rotate(45)"/>
-          <ellipse cx="0" cy="-35" rx="12" ry="32" fill="#552c00" transform="rotate(90)"/>
-          <ellipse cx="0" cy="-35" rx="12" ry="32" fill="#552c00" transform="rotate(135)"/>
-          <ellipse cx="0" cy="-35" rx="12" ry="32" fill="#552c00" transform="rotate(180)"/>
-          <ellipse cx="0" cy="-35" rx="12" ry="32" fill="#552c00" transform="rotate(225)"/>
-          <ellipse cx="0" cy="-35" rx="12" ry="32" fill="#552c00" transform="rotate(270)"/>
-          <ellipse cx="0" cy="-35" rx="12" ry="32" fill="#552c00" transform="rotate(315)"/>
-          <circle cx="0" cy="0" r="18" fill="#552c00"/>
-        </g>
-      </svg>
-    </div>
-
     <!-- Dorso centrale -->
     <div class="book-spine-center" [class.spine-open]="isOpening()"></div>
 
-    <!-- Copertina: parte a destra, ruota verso sinistra -->
-    <div class="book-cover-wrapper" [class.book-opening]="isOpening()">
+    <!-- Copertina: parte a destra, ruota verso sinistra, poi scivola via -->
+    <div class="book-cover-wrapper" [class.book-opening]="isOpening()" [class.book-sliding]="isSliding()">
 
       <!-- Faccia frontale della copertina (quella decorata) -->
       <div class="cover-face cover-front">

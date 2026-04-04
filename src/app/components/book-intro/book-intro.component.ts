@@ -10,6 +10,7 @@ import { Subscription, filter } from "rxjs";
 export class BookIntroComponent implements OnInit, OnDestroy {
   isVisible = signal(false);
   isOpening = signal(false);
+  isSliding = signal(false);
   isMobile = signal(false);
 
   private routerSub!: Subscription;
@@ -37,15 +38,16 @@ export class BookIntroComponent implements OnInit, OnDestroy {
     this.timers.forEach(clearTimeout);
     this.timers = [];
     this.isOpening.set(false);
+    this.isSliding.set(false);
     this.isVisible.set(true);
 
     if (this.isMobile()) {
-      // Mobile: attesa breve poi sipario sale
       this.timers.push(setTimeout(() => this.isOpening.set(true), 500));
       this.timers.push(setTimeout(() => this.isVisible.set(false), 3200));
     } else {
-      // Desktop: libro che si apre
+      // 700ms attesa → libro si apre (3000ms) → copertina scivola a sx (1000ms) → DOM rimosso
       this.timers.push(setTimeout(() => this.isOpening.set(true), 700));
+      this.timers.push(setTimeout(() => this.isSliding.set(true), 3800));
       this.timers.push(setTimeout(() => this.isVisible.set(false), 5000));
     }
   }

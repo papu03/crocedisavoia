@@ -1,0 +1,184 @@
+@if (isVisible()) {
+
+  <!-- ===== VERSIONE MOBILE: sipario che sale ===== -->
+  @if (isMobile()) {
+    <div class="curtain-overlay" [class.curtain-rising]="isOpening()">
+      <!-- Bordo ondulato inferiore del sipario -->
+      <svg class="curtain-bottom-edge" viewBox="0 0 400 60" preserveAspectRatio="none" fill="none">
+        <path d="M0 0 Q50 55, 100 20 Q150 -15, 200 20 Q250 55, 300 20 Q350 -15, 400 20 L400 0 Z"
+              fill="#f0e2bc"/>
+      </svg>
+      <!-- Fiore centrale grande -->
+      <svg class="curtain-flower" viewBox="0 0 200 200" fill="none">
+        <g transform="translate(100,100)">
+          <ellipse cx="0" cy="-42" rx="14" ry="38" fill="#7a4a1a" opacity="0.22"/>
+          <ellipse cx="0" cy="-42" rx="14" ry="38" fill="#7a4a1a" opacity="0.22" transform="rotate(30)"/>
+          <ellipse cx="0" cy="-42" rx="14" ry="38" fill="#7a4a1a" opacity="0.22" transform="rotate(60)"/>
+          <ellipse cx="0" cy="-42" rx="14" ry="38" fill="#7a4a1a" opacity="0.22" transform="rotate(90)"/>
+          <ellipse cx="0" cy="-42" rx="14" ry="38" fill="#7a4a1a" opacity="0.22" transform="rotate(120)"/>
+          <ellipse cx="0" cy="-42" rx="14" ry="38" fill="#7a4a1a" opacity="0.22" transform="rotate(150)"/>
+          <ellipse cx="0" cy="-42" rx="14" ry="38" fill="#7a4a1a" opacity="0.22" transform="rotate(180)"/>
+          <ellipse cx="0" cy="-42" rx="14" ry="38" fill="#7a4a1a" opacity="0.22" transform="rotate(210)"/>
+          <ellipse cx="0" cy="-42" rx="14" ry="38" fill="#7a4a1a" opacity="0.22" transform="rotate(240)"/>
+          <ellipse cx="0" cy="-42" rx="14" ry="38" fill="#7a4a1a" opacity="0.22" transform="rotate(270)"/>
+          <ellipse cx="0" cy="-42" rx="14" ry="38" fill="#7a4a1a" opacity="0.22" transform="rotate(300)"/>
+          <ellipse cx="0" cy="-42" rx="14" ry="38" fill="#7a4a1a" opacity="0.22" transform="rotate(330)"/>
+          <circle cx="0" cy="0" r="22" fill="#7a4a1a" opacity="0.28"/>
+          <circle cx="0" cy="0" r="12" fill="#f0e2bc" opacity="0.6"/>
+          <circle cx="0" cy="0" r="5" fill="#7a4a1a" opacity="0.4"/>
+        </g>
+      </svg>
+      <!-- Titolo -->
+      <div class="curtain-text">
+        <p class="curtain-eyebrow">Vallombrosa · Toscana</p>
+        <div class="curtain-divider">
+          <svg viewBox="0 0 160 16" fill="none">
+            <path d="M0 8 Q40 2, 80 8 Q120 14, 160 8" stroke="#7a4a1a" stroke-width="1" opacity="0.4"/>
+            <circle cx="80" cy="8" r="3" fill="#7a4a1a" opacity="0.35"/>
+          </svg>
+        </div>
+        <h1 class="curtain-title">Croce di Savoia</h1>
+        <div class="curtain-divider">
+          <svg viewBox="0 0 160 16" fill="none">
+            <path d="M0 8 Q40 14, 80 8 Q120 2, 160 8" stroke="#7a4a1a" stroke-width="1" opacity="0.4"/>
+            <circle cx="80" cy="8" r="3" fill="#7a4a1a" opacity="0.35"/>
+          </svg>
+        </div>
+        <p class="curtain-sub">Est. 1895</p>
+      </div>
+      <!-- Cornice angoli -->
+      <svg class="curtain-corner curtain-tl" viewBox="0 0 80 80" fill="none">
+        <path d="M4 76 C4 36, 36 4, 76 4" stroke="#7a4a1a" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="5" fill="#7a4a1a" opacity="0.18"/>
+        <circle cx="16" cy="16" r="2.5" fill="#7a4a1a" opacity="0.3"/>
+        <ellipse cx="16" cy="9" rx="2.5" ry="4" fill="#7a4a1a" opacity="0.18"/>
+        <ellipse cx="23" cy="16" rx="4" ry="2.5" fill="#7a4a1a" opacity="0.18"/>
+        <ellipse cx="16" cy="23" rx="2.5" ry="4" fill="#7a4a1a" opacity="0.18"/>
+        <ellipse cx="9" cy="16" rx="4" ry="2.5" fill="#7a4a1a" opacity="0.18"/>
+      </svg>
+      <svg class="curtain-corner curtain-tr" viewBox="0 0 80 80" fill="none">
+        <path d="M76 76 C76 36, 44 4, 4 4" stroke="#7a4a1a" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+        <circle cx="64" cy="16" r="5" fill="#7a4a1a" opacity="0.18"/>
+        <circle cx="64" cy="16" r="2.5" fill="#7a4a1a" opacity="0.3"/>
+        <ellipse cx="64" cy="9" rx="2.5" ry="4" fill="#7a4a1a" opacity="0.18"/>
+        <ellipse cx="71" cy="16" rx="4" ry="2.5" fill="#7a4a1a" opacity="0.18"/>
+        <ellipse cx="64" cy="23" rx="2.5" ry="4" fill="#7a4a1a" opacity="0.18"/>
+        <ellipse cx="57" cy="16" rx="4" ry="2.5" fill="#7a4a1a" opacity="0.18"/>
+      </svg>
+    </div>
+  }
+
+  <!-- ===== VERSIONE DESKTOP: libro che si apre ===== -->
+  @if (!isMobile()) {
+  <div class="book-overlay">
+
+    <!-- Metà sinistra: interno libro chiuso (endpaper) — svanisce dopo apertura -->
+    <div class="book-endpaper" [class.endpaper-open]="isOpening()">
+      <svg class="liberty-flower-bg" viewBox="0 0 200 200" fill="none">
+        <g opacity="0.08" transform="translate(100,100)">
+          <ellipse cx="0" cy="-35" rx="12" ry="32" fill="#552c00"/>
+          <ellipse cx="0" cy="-35" rx="12" ry="32" fill="#552c00" transform="rotate(45)"/>
+          <ellipse cx="0" cy="-35" rx="12" ry="32" fill="#552c00" transform="rotate(90)"/>
+          <ellipse cx="0" cy="-35" rx="12" ry="32" fill="#552c00" transform="rotate(135)"/>
+          <ellipse cx="0" cy="-35" rx="12" ry="32" fill="#552c00" transform="rotate(180)"/>
+          <ellipse cx="0" cy="-35" rx="12" ry="32" fill="#552c00" transform="rotate(225)"/>
+          <ellipse cx="0" cy="-35" rx="12" ry="32" fill="#552c00" transform="rotate(270)"/>
+          <ellipse cx="0" cy="-35" rx="12" ry="32" fill="#552c00" transform="rotate(315)"/>
+          <circle cx="0" cy="0" r="18" fill="#552c00"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Dorso centrale -->
+    <div class="book-spine-center" [class.spine-open]="isOpening()"></div>
+
+    <!-- Copertina: parte a destra, ruota verso sinistra -->
+    <div class="book-cover-wrapper" [class.book-opening]="isOpening()">
+
+      <!-- Faccia frontale della copertina (quella decorata) -->
+      <div class="cover-face cover-front">
+        <svg class="liberty-frame" viewBox="0 0 300 500" fill="none" preserveAspectRatio="none">
+          <rect x="8" y="8" width="284" height="484" rx="4" stroke="#7a4a1a" stroke-width="1.2" opacity="0.4"/>
+          <rect x="14" y="14" width="272" height="472" rx="3" stroke="#7a4a1a" stroke-width="0.6" opacity="0.22"/>
+          <!-- Angoli liberty -->
+          <path d="M8 80 C8 40, 40 8, 80 8" stroke="#7a4a1a" stroke-width="1.5" opacity="0.55" stroke-linecap="round"/>
+          <path d="M8 60 C8 35, 35 8, 60 8" stroke="#7a4a1a" stroke-width="0.7" opacity="0.25"/>
+          <circle cx="22" cy="22" r="7" fill="#7a4a1a" opacity="0.1"/><circle cx="22" cy="22" r="3.5" fill="#7a4a1a" opacity="0.28"/>
+          <ellipse cx="22" cy="13" rx="3" ry="5" fill="#7a4a1a" opacity="0.18"/><ellipse cx="31" cy="22" rx="5" ry="3" fill="#7a4a1a" opacity="0.18"/>
+          <ellipse cx="22" cy="31" rx="3" ry="5" fill="#7a4a1a" opacity="0.18"/><ellipse cx="13" cy="22" rx="5" ry="3" fill="#7a4a1a" opacity="0.18"/>
+          <path d="M8 420 C8 460, 40 492, 80 492" stroke="#7a4a1a" stroke-width="1.5" opacity="0.55" stroke-linecap="round"/>
+          <circle cx="22" cy="478" r="7" fill="#7a4a1a" opacity="0.1"/><circle cx="22" cy="478" r="3.5" fill="#7a4a1a" opacity="0.28"/>
+          <ellipse cx="22" cy="469" rx="3" ry="5" fill="#7a4a1a" opacity="0.18"/><ellipse cx="31" cy="478" rx="5" ry="3" fill="#7a4a1a" opacity="0.18"/>
+          <ellipse cx="22" cy="487" rx="3" ry="5" fill="#7a4a1a" opacity="0.18"/><ellipse cx="13" cy="478" rx="5" ry="3" fill="#7a4a1a" opacity="0.18"/>
+          <path d="M292 80 C292 40, 260 8, 220 8" stroke="#7a4a1a" stroke-width="1.5" opacity="0.55" stroke-linecap="round"/>
+          <circle cx="278" cy="22" r="7" fill="#7a4a1a" opacity="0.1"/><circle cx="278" cy="22" r="3.5" fill="#7a4a1a" opacity="0.28"/>
+          <ellipse cx="278" cy="13" rx="3" ry="5" fill="#7a4a1a" opacity="0.18"/><ellipse cx="287" cy="22" rx="5" ry="3" fill="#7a4a1a" opacity="0.18"/>
+          <ellipse cx="278" cy="31" rx="3" ry="5" fill="#7a4a1a" opacity="0.18"/><ellipse cx="269" cy="22" rx="5" ry="3" fill="#7a4a1a" opacity="0.18"/>
+          <path d="M292 420 C292 460, 260 492, 220 492" stroke="#7a4a1a" stroke-width="1.5" opacity="0.55" stroke-linecap="round"/>
+          <circle cx="278" cy="478" r="7" fill="#7a4a1a" opacity="0.1"/><circle cx="278" cy="478" r="3.5" fill="#7a4a1a" opacity="0.28"/>
+          <ellipse cx="278" cy="469" rx="3" ry="5" fill="#7a4a1a" opacity="0.18"/><ellipse cx="287" cy="478" rx="5" ry="3" fill="#7a4a1a" opacity="0.18"/>
+          <ellipse cx="278" cy="487" rx="3" ry="5" fill="#7a4a1a" opacity="0.18"/><ellipse cx="269" cy="478" rx="5" ry="3" fill="#7a4a1a" opacity="0.18"/>
+          <!-- Viticci laterali -->
+          <path d="M292 100 Q296 140, 292 180 Q288 220, 292 260 Q296 300, 292 340" stroke="#7a4a1a" stroke-width="0.8" opacity="0.28" stroke-linecap="round"/>
+          <circle cx="297" cy="180" r="2.5" fill="#7a4a1a" opacity="0.2"/>
+          <circle cx="287" cy="260" r="2.5" fill="#7a4a1a" opacity="0.2"/>
+          <path d="M8 100 Q4 140, 8 180 Q12 220, 8 260 Q4 300, 8 340" stroke="#7a4a1a" stroke-width="0.8" opacity="0.28" stroke-linecap="round"/>
+          <circle cx="3" cy="180" r="2.5" fill="#7a4a1a" opacity="0.2"/>
+          <!-- Ornamento centrale -->
+          <path d="M60 250 Q150 238, 240 250" stroke="#7a4a1a" stroke-width="0.7" opacity="0.22"/>
+          <circle cx="150" cy="248" r="5" fill="#7a4a1a" opacity="0.12"/><circle cx="150" cy="248" r="2.5" fill="#7a4a1a" opacity="0.22"/>
+        </svg>
+        <svg class="liberty-flower-bg" viewBox="0 0 200 200" fill="none">
+          <g opacity="0.07" transform="translate(100,100)">
+            <ellipse cx="0" cy="-35" rx="12" ry="32" fill="#552c00"/>
+            <ellipse cx="0" cy="-35" rx="12" ry="32" fill="#552c00" transform="rotate(45)"/>
+            <ellipse cx="0" cy="-35" rx="12" ry="32" fill="#552c00" transform="rotate(90)"/>
+            <ellipse cx="0" cy="-35" rx="12" ry="32" fill="#552c00" transform="rotate(135)"/>
+            <ellipse cx="0" cy="-35" rx="12" ry="32" fill="#552c00" transform="rotate(180)"/>
+            <ellipse cx="0" cy="-35" rx="12" ry="32" fill="#552c00" transform="rotate(225)"/>
+            <ellipse cx="0" cy="-35" rx="12" ry="32" fill="#552c00" transform="rotate(270)"/>
+            <ellipse cx="0" cy="-35" rx="12" ry="32" fill="#552c00" transform="rotate(315)"/>
+            <circle cx="0" cy="0" r="18" fill="#552c00"/>
+          </g>
+        </svg>
+        <div class="cover-content-right">
+          <h1 class="cover-title-main">Croce<br>di<br>Savoia</h1>
+          <div class="cover-vine-divider">
+            <svg viewBox="0 0 120 20" fill="none">
+              <path d="M5 10 Q30 3, 60 10 Q90 17, 115 10" stroke="#7a4a1a" stroke-width="1" opacity="0.45"/>
+              <circle cx="60" cy="10" r="3" fill="#7a4a1a" opacity="0.4"/>
+              <circle cx="20" cy="7" r="2" fill="#7a4a1a" opacity="0.22"/>
+              <circle cx="100" cy="13" r="2" fill="#7a4a1a" opacity="0.22"/>
+            </svg>
+          </div>
+          <p class="cover-subtitle">Albergo &amp; Ristorante</p>
+          <p class="cover-eyebrow" style="margin-top:0.6rem">Vallombrosa · Est. 1895</p>
+        </div>
+        <div class="spine-edge spine-edge-right"></div>
+      </div>
+
+      <!-- Retro della copertina: visibile mentre ruota (dentro libro) -->
+      <div class="cover-face cover-back-face">
+        <div class="cover-back-content">
+          <svg viewBox="0 0 80 80" fill="none" style="width:60px;height:60px;opacity:0.18">
+            <g transform="translate(40,40)">
+              <ellipse cx="0" cy="-20" rx="7" ry="18" fill="#552c00"/>
+              <ellipse cx="0" cy="-20" rx="7" ry="18" fill="#552c00" transform="rotate(45)"/>
+              <ellipse cx="0" cy="-20" rx="7" ry="18" fill="#552c00" transform="rotate(90)"/>
+              <ellipse cx="0" cy="-20" rx="7" ry="18" fill="#552c00" transform="rotate(135)"/>
+              <ellipse cx="0" cy="-20" rx="7" ry="18" fill="#552c00" transform="rotate(180)"/>
+              <ellipse cx="0" cy="-20" rx="7" ry="18" fill="#552c00" transform="rotate(225)"/>
+              <ellipse cx="0" cy="-20" rx="7" ry="18" fill="#552c00" transform="rotate(270)"/>
+              <ellipse cx="0" cy="-20" rx="7" ry="18" fill="#552c00" transform="rotate(315)"/>
+              <circle cx="0" cy="0" r="10" fill="#552c00"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  } <!-- fine @if !isMobile -->
+
+}

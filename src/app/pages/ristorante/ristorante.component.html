@@ -1,0 +1,218 @@
+<div class="page-transition">
+  <!-- ===== HERO SECTION ===== -->
+  <section class="py-16 px-6 bg-surface">
+    <div
+      class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+    >
+      <!-- Text -->
+      <div class="flex flex-col gap-6">
+        <div class="ornament-divider justify-start mb-2">
+          <span class="material-symbols-outlined text-primary text-xl"
+            >restaurant</span
+          >
+          <span class="font-body text-sm text-primary tracking-widest uppercase"
+            >Il Ristorante</span
+          >
+        </div>
+        <h1
+          class="font-headline text-4xl md:text-5xl font-bold text-on-surface leading-tight"
+        >
+          Il Sapore della<br />
+          <span class="text-primary">Tradizione</span>
+        </h1>
+        <p class="font-body text-lg text-on-surface-variant leading-relaxed">
+          La nostra cucina è un viaggio tra i sapori autentici della Toscana,
+          preparati con ingredienti freschi del territorio. Ogni piatto racconta
+          una storia di tradizione e passione culinaria tramandada di
+          generazione in generazione.
+        </p>
+        <p class="font-body text-base text-on-surface-variant leading-relaxed">
+          La sala ristorante, con le sue volte affrescate e i tavoli
+          apparecchiati con argenteria d'epoca, è il palcoscenico perfetto per
+          cene romantiche e celebrazioni indimenticabili.
+        </p>
+        <div class="flex gap-4">
+          <a routerLink="/contatti" class="btn-primary">
+            <span class="material-symbols-outlined text-base"
+              >calendar_month</span
+            >
+            Prenota un tavolo
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Image -->
+      <div class="relative rounded-2xl overflow-hidden shadow-2xl fade-history">
+        <img
+          src="assets/salone.jpg"
+          alt="Sala ristorante dell'Hotel Croce di Savoia"
+          class="w-full aspect-[4/3] object-cover sepia-overlay"
+        />
+        <!-- Floating eco icon -->
+        <div
+          class="absolute top-4 left-4 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center"
+        >
+          <span class="material-symbols-outlined text-white text-2xl">eco</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MENU HIGHLIGHTS ===== -->
+  <section class="py-16 px-6 bg-surface-container-low">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-10">
+        <h2 class="font-headline text-3xl font-bold text-on-surface mb-2">
+          I Piatti della Casa
+        </h2>
+        <div class="w-16 h-0.5 bg-primary rounded-full"></div>
+      </div>
+
+      <!-- Featured Bento Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+        @for (piatto of pietanzeFeatured; track piatto.nome) {
+          <div
+            class="relative rounded-2xl overflow-hidden fade-history shadow-sm min-h-56"
+            [class]="piatto.colSpan ?? ''"
+          >
+            <img
+              [src]="piatto.imageUrl"
+              [alt]="piatto.nome"
+              class="w-full h-full min-h-56 object-cover sepia-overlay"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-primary/70 to-transparent"
+            ></div>
+            <div class="absolute bottom-6 left-6 right-6">
+              <h3 class="font-headline text-xl font-semibold text-white mb-1">
+                {{ piatto.nome }}
+              </h3>
+              <p class="font-body text-sm text-white/75 leading-relaxed">
+                {{ piatto.descrizione }}
+              </p>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Secondary Bento Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        @for (piatto of pietanzeSecondarie; track piatto.nome) {
+          <div
+            class="relative rounded-2xl overflow-hidden fade-history shadow-sm min-h-44"
+          >
+            <img
+              [src]="piatto.imageUrl"
+              [alt]="piatto.nome"
+              class="w-full h-full min-h-44 object-cover sepia-overlay"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"
+            ></div>
+            <div class="absolute bottom-4 left-4 right-4">
+              <h3 class="font-headline text-base font-semibold text-white mb-1">
+                {{ piatto.nome }}
+              </h3>
+              <p class="font-body text-xs text-white/70">
+                {{ piatto.descrizione }}
+              </p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ATMOSPHERE SECTION ===== -->
+  <section class="py-16 px-6 bg-surface">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Text -->
+        <div>
+          <div class="ornament-divider justify-start mb-6">
+            <span class="material-symbols-outlined text-primary"
+              >history_edu</span
+            >
+            <span
+              class="font-body text-sm text-primary tracking-widest uppercase"
+              >L'Atmosfera</span
+            >
+          </div>
+          <h2 class="font-headline text-3xl font-bold text-on-surface mb-4">
+            Una Sala Intrisa di Storia
+          </h2>
+          <p class="font-body text-on-surface-variant leading-relaxed mb-4">
+            La nostra sala da pranzo, con le sue alte volte affrescate a mano
+            nel 1902, gli specchi dorati e le lampade in vetro di Murano, è un
+            autentico scrigno di bellezza Liberty.
+          </p>
+          <p class="font-body text-on-surface-variant leading-relaxed mb-6">
+            I tavoli sono apparecchiati con tovagliato di lino bianco,
+            argenteria d'epoca e fiori freschi raccolti nel giardino ogni
+            mattina.
+          </p>
+
+          <!-- Info Box -->
+          <div
+            class="bg-surface-container-low rounded-xl p-5 border border-outline-variant/30"
+          >
+            <h3
+              class="font-headline text-base font-semibold text-on-surface mb-3"
+            >
+              Orari e Info
+            </h3>
+            <div class="space-y-2">
+              <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-primary text-lg"
+                  >schedule</span
+                >
+                <div>
+                  <p class="font-body text-sm text-on-surface">
+                    Colazione: 7:30 – 10:00
+                  </p>
+                  <p class="font-body text-sm text-on-surface">
+                    Pranzo: 12:30 – 14:30
+                  </p>
+                  <p class="font-body text-sm text-on-surface">
+                    Cena: 19:30 – 21:30
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-primary text-lg"
+                  >info</span
+                >
+                <p class="font-body text-sm text-on-surface-variant">
+                  Aperto anche agli ospiti esterni su prenotazione
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image with Art Nouveau Frame -->
+        <div class="relative">
+          <div
+            class="art-nouveau-frame rounded-2xl overflow-hidden shadow-xl fade-history"
+          >
+            <img
+              src="assets/salone.jpg"
+              alt="Dettaglio della sala ristorante storica"
+              class="w-full aspect-[4/3] object-cover sepia-overlay"
+            />
+          </div>
+          <!-- Floating rotated image overlay -->
+          <div
+            class="absolute -bottom-6 -left-6 w-32 h-32 rounded-xl overflow-hidden shadow-lg -rotate-6 hidden lg:block fade-history"
+          >
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDK5e0FlfNRj8RoUXq0h_3mT8FBrAFkZGNyYqFJKNE5PZBcDxC6BFbTn6Vc88-K7G2wJJf2YZp3nOBFI9hbwKQtNnVLkIlrN8o8nKcD9qvFVbbQQrYgNR5k0N8M4I7UPX-qlqSGe3VLxBbJLSbPQYXVNWqXiDiWwGkgPQKXoHjh3yR5BIQvWfqr7WcFkT_UMqdFcqlm8oYpGf3kCxlS0W4FgVj7GE6G_x85xEH-l7BQVW4vCqgZ-eH-mXqjcCKnL3_v7KNRfZLOl7LUGaGY8OP8VhRVuDlKfNAbJwJOE7SYfORkG2Pf3LFsq6k_SKmPKVH3-dBt8GZt6-zpmjf4XRQIq3VNh"
+              alt="Menu manoscritto d'epoca"
+              class="w-full h-full object-cover sepia-overlay"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

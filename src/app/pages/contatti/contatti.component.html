@@ -1,0 +1,202 @@
+<div class="page-transition">
+
+  <!-- ===== PAGE HEADER ===== -->
+  <section class="bg-surface-container-low py-16 px-6 text-center floral-watermark">
+    <div class="max-w-3xl mx-auto">
+      <div class="ornament-divider mb-6">
+        <span class="material-symbols-outlined text-primary text-xl">mail</span>
+      </div>
+      <h1 class="font-headline text-4xl md:text-5xl font-bold text-on-surface mb-4">
+        Sempre al Vostro Servizio
+      </h1>
+      <p class="font-body text-lg text-on-surface-variant leading-relaxed">
+        Siamo qui per rispondere a ogni vostra domanda e aiutarvi a pianificare
+        il soggiorno perfetto nel cuore della Foresta di Vallombrosa.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== INFO CARDS ===== -->
+  <section class="py-12 px-6 bg-surface">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      @for (info of contactInfo; track info.title) {
+        <div class="bg-surface-container-low rounded-2xl p-6 flex flex-col items-center text-center gap-4 shadow-sm">
+          <div class="w-14 h-14 bg-surface-container-lowest rounded-xl flex items-center justify-center shadow-sm">
+            <span class="material-symbols-outlined text-primary text-2xl">{{ info.icon }}</span>
+          </div>
+          <div>
+            <h3 class="font-headline text-base font-semibold text-on-surface mb-2">{{ info.title }}</h3>
+            @for (line of info.lines; track line) {
+              @if (info.href && $first) {
+                <a [href]="info.href" class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors block">
+                  {{ line }}
+                </a>
+              } @else {
+                <p class="font-body text-sm text-on-surface-variant">{{ line }}</p>
+              }
+            }
+          </div>
+        </div>
+      }
+
+    </div>
+  </section>
+
+  <!-- ===== MAP + FORM SECTION ===== -->
+  <section class="py-12 px-6 pb-20 bg-surface">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+
+      <!-- Map Card (stylized) -->
+      <div class="relative rounded-2xl overflow-hidden shadow-xl lg:-rotate-1">
+        <div class="aspect-square md:aspect-video lg:aspect-square relative">
+          <!-- Map placeholder (replace with real map iframe in production) -->
+          <div class="w-full h-full bg-surface-container-highest flex items-center justify-center min-h-80">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2878.3!2d11.5!3d43.72!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132a5e1b!2sVallombrosa!5e0!3m2!1sit!2sit!4v1"
+              class="w-full h-full min-h-80 grayscale opacity-80"
+              style="border:0; filter: sepia(0.3) grayscale(0.7) contrast(0.9);"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Mappa Hotel Croce di Savoia - Vallombrosa"
+            ></iframe>
+          </div>
+
+          <!-- Gradient footer overlay -->
+          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary/80 to-transparent p-6">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-white text-xl">location_on</span>
+              <div>
+                <p class="font-headline text-sm font-semibold text-white">Hotel Croce di Savoia</p>
+                <p class="font-body text-xs text-white/70">Via Croce di Savoia, 5 — Vallombrosa (FI)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form (Letter aesthetic) -->
+      <div class="relative bg-white rounded-2xl shadow-2xl p-8 md:p-10 overflow-hidden">
+        <!-- Decorative corner motif -->
+        <div class="absolute top-4 right-4 opacity-10">
+          <span class="material-symbols-outlined text-primary text-6xl">spa</span>
+        </div>
+
+        <h2 class="font-headline text-2xl font-bold text-on-surface mb-2">Scriveteci</h2>
+        <p class="font-body text-sm text-on-surface-variant mb-8 leading-relaxed">
+          Vi risponderemo entro 24 ore. Per richieste urgenti chiamateci direttamente.
+        </p>
+
+        <!-- Success message -->
+        @if (success()) {
+          <div class="mb-6 p-4 bg-secondary/10 border border-secondary/30 rounded-xl flex items-start gap-3">
+            <span class="material-symbols-outlined text-secondary text-xl">check_circle</span>
+            <div>
+              <p class="font-body text-sm font-semibold text-on-surface">Messaggio inviato!</p>
+              <p class="font-body text-xs text-on-surface-variant mt-0.5">Vi risponderemo al più presto.</p>
+            </div>
+          </div>
+        }
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-6" novalidate>
+
+          <!-- Nome -->
+          <div>
+            <label for="nome" class="font-body text-sm text-on-surface-variant block mb-1">
+              Nome e Cognome <span class="text-primary">*</span>
+            </label>
+            <input
+              id="nome"
+              type="text"
+              formControlName="nome"
+              placeholder="Mario Rossi"
+              class="input-art-nouveau"
+              [class.border-b-red-400]="hasError('nome', 'required') || hasError('nome', 'minlength')"
+            >
+            @if (hasError('nome', 'required')) {
+              <p class="font-body text-xs text-red-500 mt-1">Il nome è obbligatorio</p>
+            }
+            @if (hasError('nome', 'minlength')) {
+              <p class="font-body text-xs text-red-500 mt-1">Il nome deve essere di almeno 2 caratteri</p>
+            }
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label for="email" class="font-body text-sm text-on-surface-variant block mb-1">
+              Indirizzo Email <span class="text-primary">*</span>
+            </label>
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              placeholder="mario&#64;esempio.it"
+              class="input-art-nouveau"
+              [class.border-b-red-400]="hasError('email', 'required') || hasError('email', 'email')"
+            >
+            @if (hasError('email', 'required')) {
+              <p class="font-body text-xs text-red-500 mt-1">L'email è obbligatoria</p>
+            }
+            @if (hasError('email', 'email')) {
+              <p class="font-body text-xs text-red-500 mt-1">Inserire un indirizzo email valido</p>
+            }
+          </div>
+
+          <!-- Messaggio -->
+          <div>
+            <label for="messaggio" class="font-body text-sm text-on-surface-variant block mb-1">
+              Il vostro messaggio <span class="text-primary">*</span>
+            </label>
+            <textarea
+              id="messaggio"
+              formControlName="messaggio"
+              rows="5"
+              placeholder="Come possiamo aiutarvi? Domande su camere, prenotazioni, eventi..."
+              class="input-art-nouveau resize-none"
+              [class.border-b-red-400]="hasError('messaggio', 'required') || hasError('messaggio', 'minlength')"
+            ></textarea>
+            @if (hasError('messaggio', 'required')) {
+              <p class="font-body text-xs text-red-500 mt-1">Il messaggio è obbligatorio</p>
+            }
+            @if (hasError('messaggio', 'minlength')) {
+              <p class="font-body text-xs text-red-500 mt-1">Il messaggio deve essere di almeno 10 caratteri</p>
+            }
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="btn-primary w-full justify-center">
+            <span class="material-symbols-outlined text-base">send</span>
+            Invia il messaggio
+          </button>
+
+        </form>
+
+        <!-- Divider -->
+        <div class="ornament-divider my-6">
+          <span class="font-body text-xs text-on-surface-variant">oppure</span>
+        </div>
+
+        <!-- Direct contacts -->
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a
+            href="tel:+390558629300"
+            class="flex-1 flex items-center justify-center gap-2 border border-outline-variant/50 rounded-xl py-3 px-4 text-on-surface-variant hover:text-primary hover:border-primary/40 transition-colors font-body text-sm"
+          >
+            <span class="material-symbols-outlined text-base">call</span>
+            +39 055 862 9300
+          </a>
+          <a
+            href="mailto:info@crocedisavoia.it"
+            class="flex-1 flex items-center justify-center gap-2 border border-outline-variant/50 rounded-xl py-3 px-4 text-on-surface-variant hover:text-primary hover:border-primary/40 transition-colors font-body text-sm"
+          >
+            <span class="material-symbols-outlined text-base">mail</span>
+            info&#64;crocedisavoia.it
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>

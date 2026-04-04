@@ -1,0 +1,426 @@
+<div class="page-transition">
+  <!-- ===== HERO SECTION ===== -->
+  <section
+    class="min-h-screen bg-surface flex items-center py-12 px-6 md:px-12 lg:px-20"
+  >
+    <div
+      class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+    >
+      <!-- Hero Image -->
+      <div class="relative order-2 lg:order-2">
+        <div
+          class="relative rounded-2xl overflow-hidden shadow-2xl fade-history group"
+        >
+          <img
+            src="assets/da-strada.jpg"
+            alt="Hall dell'Hotel Croce di Savoia con arredi in stile Liberty"
+            class="w-full aspect-[4/3] object-cover sepia-overlay"
+          />
+          <!-- Gradient overlay -->
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent pointer-events-none"
+          ></div>
+          <!-- Caption -->
+          <div class="absolute bottom-4 left-4 right-4">
+            <p
+              class="font-body text-sm text-on-primary/80 bg-primary/60 backdrop-blur-sm rounded-lg px-3 py-1.5 inline-block"
+            >
+              La storica hall Liberty — 1895
+            </p>
+          </div>
+        </div>
+        <!-- Floating ornament -->
+        <div
+          class="absolute -top-4 -right-4 w-16 h-16 bg-surface-container-low rounded-full flex items-center justify-center shadow-lg"
+        >
+          <span class="material-symbols-outlined text-primary text-2xl"
+            >nature_people</span
+          >
+        </div>
+      </div>
+
+      <!-- Hero Text -->
+      <div class="order-1 lg:order-1 flex flex-col gap-6">
+        <div>
+          <p
+            class="font-body text-sm text-primary tracking-widest uppercase mb-3 flex items-center gap-2"
+          >
+            <span class="w-8 h-px bg-primary inline-block"></span>
+            Vallombrosa, Toscana
+          </p>
+          <h1
+            class="font-headline text-5xl md:text-6xl font-bold text-on-surface leading-tight mb-4"
+          >
+            Eleganza<br />
+            <span class="text-primary">dal 1800</span>
+          </h1>
+          <p class="font-body text-lg text-on-surface-variant leading-relaxed">
+            Immerso nella Foresta di Vallombrosa, l'Hotel Croce di Savoia è un
+            rifugio di pace e bellezza a 950 metri d'altitudine. Un luogo dove
+            la natura incontra l'eleganza storica del Liberty italiano.
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a routerLink="/camere" class="btn-primary">
+            <span class="material-symbols-outlined text-base">bed</span>
+            Scopri le camere
+          </a>
+          <a
+            routerLink="/storia"
+            class="inline-flex items-center gap-2 font-body text-primary hover:opacity-70 transition-opacity py-3"
+          >
+            <span class="material-symbols-outlined text-base">history_edu</span>
+            La nostra storia
+          </a>
+        </div>
+
+        <!-- Quick info badges -->
+        <div class="flex flex-wrap gap-3 pt-2">
+          <span
+            class="font-body text-xs bg-surface-container-low text-on-surface-variant px-3 py-1.5 rounded-full border border-outline-variant/30"
+          >
+            🌿 Foresta UNESCO
+          </span>
+          <span
+            class="font-body text-xs bg-surface-container-low text-on-surface-variant px-3 py-1.5 rounded-full border border-outline-variant/30"
+          >
+            ⛰️ 950m s.l.m.
+          </span>
+          <span
+            class="font-body text-xs bg-surface-container-low text-on-surface-variant px-3 py-1.5 rounded-full border border-outline-variant/30"
+          >
+            🏛️ Dal 1895
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INTRO / STATS SECTION ===== -->
+  <section class="bg-surface-container-low py-16 px-6 floral-watermark">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="ornament-divider mb-8">
+        <span class="material-symbols-outlined text-primary text-xl">spa</span>
+      </div>
+      <h2
+        class="font-headline text-3xl md:text-4xl font-bold text-on-surface mb-4"
+      >
+        Il Rifugio dell'Anima
+      </h2>
+      <p
+        class="font-body text-base text-on-surface-variant leading-relaxed max-w-2xl mx-auto mb-12"
+      >
+        Lasciati avvolgere dall'atmosfera unica di un hotel che ha accolto re,
+        artisti e viaggiatori per oltre un secolo. Ogni angolo racconta una
+        storia, ogni dettaglio è un omaggio all'arte Liberty.
+      </p>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-3 gap-8">
+        @for (stat of stats; track stat.label) {
+          <div class="flex flex-col items-center gap-2">
+            <div
+              class="w-14 h-14 bg-surface-container-lowest rounded-full flex items-center justify-center shadow-sm mb-2"
+            >
+              <span class="material-symbols-outlined text-primary text-2xl">{{
+                stat.icon
+              }}</span>
+            </div>
+            <p
+              class="font-headline text-3xl md:text-4xl font-bold text-primary"
+            >
+              {{ stat.value }}
+            </p>
+            <p
+              class="font-body text-sm text-on-surface-variant uppercase tracking-wider"
+            >
+              {{ stat.label }}
+            </p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE / BENTO SECTION ===== -->
+  <section class="py-16 px-6 bg-surface">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-center gap-4 mb-10">
+        <h2 class="font-headline text-3xl font-bold text-on-surface">
+          L'Esperienza Croce di Savoia
+        </h2>
+        <div
+          class="flex-1 h-px bg-gradient-to-r from-outline-variant to-transparent"
+        ></div>
+      </div>
+
+      <!-- Bento Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Large Card: Description -->
+        <div
+          class="lg:col-span-1 bg-surface-container-low rounded-2xl p-8 flex flex-col justify-between"
+        >
+          <div>
+            <span
+              class="material-symbols-outlined text-primary text-3xl mb-4 block"
+              >landscape</span
+            >
+            <h3
+              class="font-headline text-2xl font-semibold text-on-surface mb-3"
+            >
+              Natura e Silenzio
+            </h3>
+            <p class="font-body text-on-surface-variant leading-relaxed">
+              Circondati da 1.000 ettari di foresta secolare, potrete godere di
+              passeggiate tra abeti monumentali, sentieri panoramici e l'aria
+              pura dell'Appennino toscano.
+            </p>
+          </div>
+          <a
+            routerLink="/storia"
+            class="inline-flex items-center gap-2 text-primary font-body text-sm mt-6 hover:gap-3 transition-all"
+          >
+            Scopri di più
+            <span class="material-symbols-outlined text-base"
+              >arrow_forward</span
+            >
+          </a>
+        </div>
+
+        <!-- Large Image Card -->
+        <div
+          class="lg:col-span-2 relative rounded-2xl overflow-hidden fade-history min-h-64"
+        >
+          <img
+            src="assets/esterno.jpg"
+            alt="Facciata storica dell'Hotel Croce di Savoia"
+            class="w-full h-full object-cover min-h-64 sepia-overlay"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"
+          ></div>
+          <div class="absolute bottom-6 left-6 right-6">
+            <p class="font-headline text-white text-xl font-semibold">
+              La Facciata Storica
+            </p>
+            <p class="font-body text-white/70 text-sm mt-1">
+              Architettura Liberty dell'Ottocento
+            </p>
+          </div>
+          <!-- Visibility icon on hover -->
+          <div
+            class="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+          >
+            <span class="material-symbols-outlined text-white text-xl"
+              >visibility</span
+            >
+          </div>
+        </div>
+
+        <!-- Garden Card -->
+        <div
+          class="lg:col-span-2 relative rounded-2xl overflow-hidden fade-history min-h-48 group"
+        >
+          <img
+            src="assets/pratone.png"
+            alt="Giardino e il Pratone di Vallombrosa"
+            class="w-full h-full object-cover min-h-48 sepia-overlay"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-primary/30 to-transparent"
+          ></div>
+          <div class="absolute bottom-6 left-6">
+            <p class="font-headline text-white text-xl font-semibold">
+              Il Pratone di Vallombrosa
+            </p>
+            <p class="font-body text-white/70 text-sm mt-1">
+              Un prato millenario — rifugio di pace
+            </p>
+          </div>
+        </div>
+
+        <!-- Heritage Badge Card -->
+        <div
+          class="heritage-badge flex flex-col items-center justify-center gap-3 min-h-48"
+        >
+          <span
+            class="material-symbols-outlined text-4xl"
+            style="color: rgba(254, 250, 232, 0.6)"
+            >rewarded_ads</span
+          >
+          <p class="font-headline text-xl font-bold">Heritage<br />Sanctuary</p>
+          <div class="w-8 h-px bg-current opacity-40"></div>
+          <p class="font-body text-xs tracking-widest uppercase opacity-70">
+            Est. MDCCCXCV
+          </p>
+          <p
+            class="font-body text-xs text-center opacity-60 leading-relaxed mt-1"
+          >
+            Patrimonio storico<br />della Toscana
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES PREVIEW SECTION ===== -->
+  <section class="bg-surface-container-low py-16 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="ornament-divider mb-6">
+          <span class="material-symbols-outlined text-primary">spa</span>
+        </div>
+        <h2 class="font-headline text-3xl font-bold text-on-surface">
+          I Nostri Servizi
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Camere -->
+        <div
+          class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300"
+        >
+          <div
+            class="w-12 h-12 bg-surface-container-low rounded-xl flex items-center justify-center mb-4"
+          >
+            <span class="material-symbols-outlined text-primary text-2xl"
+              >bed</span
+            >
+          </div>
+          <h3 class="font-headline text-xl font-semibold text-on-surface mb-2">
+            Le Camere
+          </h3>
+          <p
+            class="font-body text-sm text-on-surface-variant leading-relaxed mb-4"
+          >
+            Camere arredate con mobili d'epoca e ogni comfort moderno. Viste
+            sulla foresta o sul giardino.
+          </p>
+          <a
+            routerLink="/camere"
+            class="inline-flex items-center gap-1 text-primary font-body text-sm hover:gap-2 transition-all"
+          >
+            Vedi camere
+            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+
+        <!-- Ristorante -->
+        <div
+          class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300"
+        >
+          <div
+            class="w-12 h-12 bg-surface-container-low rounded-xl flex items-center justify-center mb-4"
+          >
+            <span class="material-symbols-outlined text-primary text-2xl"
+              >restaurant</span
+            >
+          </div>
+          <h3 class="font-headline text-xl font-semibold text-on-surface mb-2">
+            Il Ristorante
+          </h3>
+          <p
+            class="font-body text-sm text-on-surface-variant leading-relaxed mb-4"
+          >
+            Cucina toscana tradizionale con ingredienti locali. Specialità come
+            gli agnolotti al tartufo e il brasato al Chianti.
+          </p>
+          <a
+            routerLink="/ristorante"
+            class="inline-flex items-center gap-1 text-primary font-body text-sm hover:gap-2 transition-all"
+          >
+            Scopri il menu
+            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+
+        <!-- Natura -->
+        <div
+          class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300"
+        >
+          <div
+            class="w-12 h-12 bg-surface-container-low rounded-xl flex items-center justify-center mb-4"
+          >
+            <span class="material-symbols-outlined text-primary text-2xl"
+              >nature_people</span
+            >
+          </div>
+          <h3 class="font-headline text-xl font-semibold text-on-surface mb-2">
+            La Natura
+          </h3>
+          <p
+            class="font-body text-sm text-on-surface-variant leading-relaxed mb-4"
+          >
+            Passeggiate guidate nella foresta, trekking verso il Pratone e
+            sentieri panoramici sull'Appennino toscano.
+          </p>
+          <a
+            routerLink="/storia"
+            class="inline-flex items-center gap-1 text-primary font-body text-sm hover:gap-2 transition-all"
+          >
+            Scopri il territorio
+            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIAL SECTION ===== -->
+  <section class="py-16 px-6 bg-surface">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="ornament-divider mb-10">
+        <span class="material-symbols-outlined text-primary text-xl filled"
+          >format_quote</span
+        >
+      </div>
+
+      <div class="art-nouveau-frame p-8 bg-surface-container-low rounded-2xl">
+        <span
+          class="material-symbols-outlined text-primary text-5xl opacity-30 mb-4 block filled"
+          >format_quote</span
+        >
+        <blockquote
+          class="font-headline text-xl md:text-2xl font-normal italic text-on-surface leading-relaxed mb-6"
+        >
+          "{{ testimonial.quote }}"
+        </blockquote>
+        <cite class="not-italic">
+          <p class="font-body font-semibold text-on-surface">
+            — {{ testimonial.author }}
+          </p>
+          <p class="font-body text-sm text-on-surface-variant">
+            {{ testimonial.origin }}
+          </p>
+        </cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA SECTION ===== -->
+  <section class="py-16 px-6 bg-primary/5">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="font-headline text-3xl font-bold text-on-surface mb-4">
+        Pronti a Vivere l'Esperienza?
+      </h2>
+      <p class="font-body text-on-surface-variant mb-8">
+        Contattaci per prenotare il vostro soggiorno o per qualsiasi
+        informazione. Siamo qui per rendere il vostro ritiro indimenticabile.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a routerLink="/contatti" class="btn-primary">
+          <span class="material-symbols-outlined text-base">mail</span>
+          Contattaci
+        </a>
+        <a
+          href="tel:+390558629300"
+          class="inline-flex items-center gap-2 justify-center font-body border border-primary/30 text-primary px-6 py-3 rounded-lg hover:bg-primary/5 transition-colors"
+        >
+          <span class="material-symbols-outlined text-base">call</span>
+          +39 055 862 9300
+        </a>
+      </div>
+    </div>
+  </section>
+</div>

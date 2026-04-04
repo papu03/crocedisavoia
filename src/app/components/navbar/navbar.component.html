@@ -1,0 +1,118 @@
+<!-- ===== TOP NAVIGATION BAR ===== -->
+<nav
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+  [class.bg-glass]="true"
+  [class.shadow-sm]="isScrolled()"
+>
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a routerLink="/" class="flex items-center gap-3 group" (click)="closeMobileMenu()">
+      <span class="material-symbols-outlined text-primary text-3xl filled">hotel</span>
+      <div>
+        <p class="font-headline text-lg font-bold text-primary leading-tight">Croce di Savoia</p>
+        <p class="font-body text-xs text-on-surface-variant tracking-widest uppercase">Vallombrosa · Est. 1895</p>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <div class="hidden md:flex items-center gap-8">
+      @for (link of navLinks; track link.path) {
+        <a
+          [routerLink]="link.path"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+          class="nav-link"
+        >
+          {{ link.label }}
+        </a>
+      }
+    </div>
+
+    <!-- Desktop CTA Button -->
+    <a
+      href="mailto:info@crocedisavoia.it"
+      class="hidden md:inline-flex btn-primary text-sm"
+    >
+      <span class="material-symbols-outlined text-base">calendar_month</span>
+      Prenota
+    </a>
+
+    <!-- Mobile Menu Toggle -->
+    <button
+      class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-primary hover:bg-surface-container-low transition-colors"
+      (click)="toggleMobileMenu()"
+      aria-label="Menu"
+    >
+      <span class="material-symbols-outlined">{{ isMobileMenuOpen() ? 'close' : 'menu' }}</span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Dropdown -->
+  @if (isMobileMenuOpen()) {
+    <div class="md:hidden bg-glass border-t border-outline-variant/30 px-6 py-4 flex flex-col gap-4">
+      @for (link of navLinks; track link.path) {
+        <a
+          [routerLink]="link.path"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+          class="nav-link flex items-center gap-3 py-2 text-base"
+          (click)="closeMobileMenu()"
+        >
+          <span class="material-symbols-outlined text-xl text-primary">{{ link.icon }}</span>
+          {{ link.label }}
+        </a>
+      }
+      <a
+        href="mailto:info@crocedisavoia.it"
+        class="btn-primary justify-center mt-2"
+        (click)="closeMobileMenu()"
+      >
+        <span class="material-symbols-outlined text-base">calendar_month</span>
+        Prenota ora
+      </a>
+    </div>
+  }
+</nav>
+
+<!-- ===== DESKTOP SIDE NAVIGATION ===== -->
+<aside class="hidden xl:flex fixed left-6 top-1/2 -translate-y-1/2 z-40 flex-col gap-3">
+  @for (link of navLinks; track link.path) {
+    <a
+      [routerLink]="link.path"
+      routerLinkActive="side-active"
+      [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+      class="group flex items-center justify-center w-11 h-11 rounded-full bg-surface-container-low/80 backdrop-blur-sm text-on-surface-variant hover:bg-surface-container hover:text-primary transition-all duration-300 relative"
+      [title]="link.label"
+    >
+      <span class="material-symbols-outlined text-xl">{{ link.icon }}</span>
+      <!-- Tooltip -->
+      <span class="absolute left-14 bg-primary text-on-primary text-xs font-body px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+        {{ link.label }}
+      </span>
+    </a>
+  }
+</aside>
+
+<!-- ===== MOBILE BOTTOM NAVIGATION ===== -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-glass border-t border-outline-variant/30 flex justify-around px-2 py-2">
+  @for (link of navLinks; track link.path) {
+    <a
+      [routerLink]="link.path"
+      routerLinkActive="text-primary"
+      #rla="routerLinkActive"
+      [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+      class="flex flex-col items-center gap-0.5 px-3 py-1 text-on-surface-variant hover:text-primary transition-colors duration-300 relative"
+    >
+      <span
+        class="absolute -top-2 w-8 h-1 rounded-full bg-primary transition-all duration-300"
+        [class.opacity-0]="!rla.isActive"
+      ></span>
+      <span
+        class="material-symbols-outlined text-2xl transition-all duration-300"
+        [style.font-variation-settings]="fillStyle(rla.isActive)"
+      >{{ link.icon }}</span>
+      <span class="text-xs font-body" [class.font-semibold]="rla.isActive">{{ link.label }}</span>
+    </a>
+  }
+</nav>

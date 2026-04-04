@@ -1,0 +1,76 @@
+<footer class="bg-surface-container-highest mt-16 pb-20 md:pb-0">
+  <div class="max-w-7xl mx-auto px-6 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+      <!-- Brand Column -->
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="material-symbols-outlined text-primary text-2xl filled">hotel</span>
+          <p class="font-headline text-lg font-bold text-primary">Croce di Savoia</p>
+        </div>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed mb-4">
+          Un rifugio di eleganza storica nel cuore della Foresta di Vallombrosa,
+          a 950 metri sul livello del mare. Dal 1895.
+        </p>
+        <p class="font-body text-xs text-on-surface-variant/60 italic">
+          "Dove la natura incontra la storia"
+        </p>
+      </div>
+
+      <!-- Contact Column -->
+      <div>
+        <h3 class="font-headline text-base font-semibold text-on-surface mb-4">Contatti</h3>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-primary text-lg mt-0.5">location_on</span>
+            <div>
+              <p class="font-body text-sm text-on-surface">Via Croce di Savoia, 5</p>
+              <p class="font-body text-sm text-on-surface-variant">50066 Vallombrosa (FI)</p>
+            </div>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-primary text-lg">call</span>
+            <a href="tel:+390558629300" class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors">
+              +39 055 862 9300
+            </a>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-primary text-lg">mail</span>
+            <a href="mailto:info@crocedisavoia.it" class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors">
+              info&#64;crocedisavoia.it
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Links Column -->
+      <div>
+        <h3 class="font-headline text-base font-semibold text-on-surface mb-4">Esplora</h3>
+        <ul class="space-y-2">
+          <li><a routerLink="/" class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors">Home</a></li>
+          <li><a routerLink="/camere" class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors">Le Camere</a></li>
+          <li><a routerLink="/ristorante" class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors">Il Ristorante</a></li>
+          <li><a routerLink="/storia" class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors">La Nostra Storia</a></li>
+          <li><a routerLink="/contatti" class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors">Contattaci</a></li>
+        </ul>
+        <div class="mt-6">
+          <p class="font-body text-xs text-on-surface-variant/50 uppercase tracking-widest mb-2">Orari Struttura</p>
+          <p class="font-body text-sm text-on-surface-variant">Check-in: 14:00 – 20:00</p>
+          <p class="font-body text-sm text-on-surface-variant">Check-out: entro le 11:00</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="mt-10 pt-6 border-t border-outline-variant/30 flex flex-col md:flex-row items-center justify-between gap-3">
+      <p class="font-body text-xs text-on-surface-variant/50">
+        &copy; {{ currentYear }} Hotel Croce di Savoia. Tutti i diritti riservati.
+      </p>
+      <div class="flex gap-4">
+        <a href="#" class="font-body text-xs text-on-surface-variant/50 hover:text-primary transition-colors">Privacy Policy</a>
+        <a href="#" class="font-body text-xs text-on-surface-variant/50 hover:text-primary transition-colors">Cookie Policy</a>
+        <a href="#" class="font-body text-xs text-on-surface-variant/50 hover:text-primary transition-colors">Note Legali</a>
+      </div>
+    </div>
+  </div>
+</footer>

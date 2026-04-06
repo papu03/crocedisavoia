@@ -1,0 +1,13 @@
+@if (isVisible()) {
+  <div class="video-overlay" [class.video-fading]="isFading()">
+    <video
+      #videoEl
+      class="video-fill"
+      src="assets/open book.mp4"
+      muted
+      playsinline
+      preload="auto"
+      (ended)="onVideoEnded()"
+    ></video>
+  </div>
+}

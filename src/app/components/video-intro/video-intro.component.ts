@@ -48,6 +48,12 @@ export class VideoIntroComponent implements OnInit, OnDestroy {
     this.fadeOut();
   }
 
+  skip() {
+    if (!this.isFading()) {
+      this.fadeOut();
+    }
+  }
+
   private fadeOut() {
     this.isFading.set(true);
     setTimeout(() => this.isVisible.set(false), 1000);

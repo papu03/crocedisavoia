@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cmd /c \"where node 2>&1\")",
+      "Read(//c/Program Files/**)",
+      "Read(//c/Users/ricca/AppData/Local/Programs/**)",
+      "Read(//c/Users/ricca/**)",
+      "Bash(export PATH=\"/c/Users/ricca/AppData/Local/nvm/v24.14.1:$PATH\")",
+      "Bash(npm --version)"
+    ]
+  }
+}
